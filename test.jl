@@ -15,3 +15,11 @@ labels=(Guide.xlabel("Time"),Guide.ylabel("Value"),
     Guide.title("Brownian Motion Trials"),
     Guide.manual_color_key("Legend",l,c))
 Gadfly.plot(pl...,labels...)
+h(n)=[1/(i+j+1) for i=1:n,j=1:n]
+H=h(15)
+setrounding(Float64,RoundNearest) do
+    inv(H)[1,1]
+end
+setrounding(Float64,) do
+    inv(H)[1,1]
+end
