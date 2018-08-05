@@ -20,6 +20,23 @@ H=h(15)
 setrounding(Float64,RoundNearest) do
     inv(H)[1,1]
 end
-setrounding(Float64,) do
+setrounding(Float64,RoundUp) do
     inv(H)[1,1]
 end
+rand(1,2,1)
+[1 2;3 4]
+[true;false]
+dump(h)
+a = [eye(2) for i=1:2]
+function prefix{T}(w::Vector{T})
+    for i=2:size(w,1)
+        w[i]+=w[i-1]
+    end
+    w
+end
+x = ones(1_000_000)
+@time prefix(x)
+y = ones(1_000_000) + im*ones(1_000_1000)
+@time prefix(y)
+f(a,b) = a+b
+@code_native f(2,3)
